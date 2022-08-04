@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  nlp-web:
+    image: nlp-web:latest
+    container_name: "nlp-web"
+    restart: always
+    environment:
+      UPLOAD_FOLDER: /home/ubuntu/BIGDATA_STT/tmp
+      UPLOAD_FOLDER_STT_CONVERSATION: /usr/src/app/static/cskh
+      URL_TTS: http://10.38.23.47:8000/TTS
+      ULR_STT_VN: http://10.38.23.47:8080/predict
+      ULR_STT_EN: http://10.38.23.47:8080/engpredict
+      ULR_STT_CONVERSATION: http://10.38.23.47:8080/cskh
+    ports:
+      - 5000:5000
+    volumes:
+      - /home/haunt32/ai-bigdata/Web/tmp:/home/ubuntu/BIGDATA_STT/tmp
+      - /home/haunt32/ai-bigdata/Web/tts:/usr/src/app/static/sound
+      - /home/haunt32/ai-bigdata/Web/cskh:/usr/src/app/static/cskh

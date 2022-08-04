@@ -1,0 +1,1 @@
+source /home/ubuntu/BIGDATA_STT/bigdata_venv

@@ -1,0 +1,261 @@
+html {
+    overflow: hidden;
+}
+
+.navbar.navbar-transparent {
+    padding: 0.625rem 0;
+}
+
+.loading-overlay {
+    z-index: 3 !important;
+}
+
+#id-recording-audio {
+    border: 1px solid #80808033;
+}
+
+#id-recording-audio canvas {
+    width: 100% !important;
+}
+
+.recording-audio {
+    position: relative;
+    height: 50px;
+    background-color: #101e76;
+    overflow: hidden;
+}
+
+#canvas-wave {
+    width: 100%;
+    height: 100%;
+}
+
+.inputFile-custom__file {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100% !important;
+    opacity: 0;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+.result-loading > i {
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.current-result {
+    height: 35vh;
+    width: 100%;
+    border: 1px dashed #b7b5b5;
+    border-top: 0;
+    padding: 30px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.td-result {
+    max-height: 250px;
+    overflow: auto;
+}
+
+/*.purple-filter:after {*/
+/*    background: rgba(101, 47, 142, 0.64);*/
+/*    background: linear-gradient(*/
+/*            45deg, rgba(101, 47, 142, 0.88) 0%, rgba(125, 46, 185, 0.45) 100%);*/
+/*    background: -moz-linear-gradient(135deg, rgba(101, 47, 142, 0.88) 0%, rgba(125, 46, 185, 0.45) 100%);*/
+/*    background: -webkit-linear-gradient(*/
+/*            135deg, #00e2ff8a 0%, rgba(125, 46, 185, 0.45) 100%);*/
+/*}*/
+
+
+button[disabled=disabled], button[disabled=disabled]:hover {
+    color: #fff;
+    background-color: gray !important;
+    border-color: gray !important;
+    user-select: none !important;
+    cursor: not-allowed !important;
+    opacity: 0.4 !important;
+}
+
+.loader {
+    color: #ffffff;
+    font-size: 90px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 72px auto;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+    animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+@-webkit-keyframes load6 {
+    0% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+}
+
+@keyframes load6 {
+    0% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+}
+
+@-webkit-keyframes round {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes round {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    opacity: 1;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00bcd4;
+    transition: opacity 1s ease-in-out;
+}
+
+.loading.remove {
+    opacity: 0;
+}
+
+.chat-body .message-text {
+    background: #f6f9fb;
+    border-radius: 0.6rem;
+    padding: 0.5rem 0.6rem;
+    color: #95aac9;
+}
+
+.chat-body .message-text p {
+    font-size: 13px;
+}
+
+.chat-body .avatar .avatar-img {
+    max-width: unset !important;
+    width: 100%;
+    object-fit: contain;
+}
+
+.chat-body .message {
+    margin-top: 10px;
+}
+
+.message-content + .message-content {
+    margin-top: 0.35rem;
+}
+
+.avatar-offline::before, .avatar-online::before {
+    /*content: attr(data-zone);*/
+    display: none !important;
+}
+
+.modal-body {
+    max-height: calc(100vh - 170px) !important;
+    overflow: auto;
+}
+
+.chat-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-legend > div > div {
+    margin-left: 10px;
+}
+
+.chat-legend > div {
+    flex: 1;
+}
+
+.chat-legend div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}

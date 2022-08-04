@@ -1,0 +1,498 @@
+<!--
+=========================================================
+Material Kit - v2.0.7
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-kit
+Copyright 2020 Creative Tim (https://www.creative-tim.com/)
+
+Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="static/theme/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="static/images/favicon-mobifone-ai.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>
+        Speech To Text - Conversation | MOBIFONE.AI
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="static/theme/css/material-kit.css?v=2.0.7" rel="stylesheet"/>
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="static/theme/demo/demo.css" rel="stylesheet"/>
+    <link href="static/css/template.bundle.css" rel="stylesheet"/>
+    <link href="static/css/custom.css" rel="stylesheet"/>
+    <link href="static/js/jquery-loading/loading.css" rel="stylesheet"/>
+</head>
+
+<body class="index-page sidebar-collapse" ng-app="AppModule" ng-controller="AppController">
+<div class="loading" id="id-loading" ng-class="{'remove': !loading}">
+    <div class="loader">Loading...</div>
+</div>
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100"
+     id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="/" style="border-radius: 4px;
+                    {#background: #ffffffa1;#}
+                    padding: 4px 15px 0;">
+                <img src="static/images/logo.png" alt="" style="width: 185px;">
+                <div class="ripple-container"></div>
+            </a>
+            <button class=" navbar-toggler
+                " type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">language</i> {{ 'language' | translate }}
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="javascript:void(0)" class="dropdown-item" ng-click="changeLanguage('en')">
+                            {{ 'en' | translate }}
+                        </a>
+                        <a href="javascript:void(0)" class="dropdown-item" ng-click="changeLanguage('vi')">
+                            {{ 'vi' | translate }}
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item" ng-if="false">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
+                       href="/" target="_blank" data-original-title="Follow us on Twitter"
+                       rel="nofollow">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item" ng-if="false">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
+                       href="/" target="_blank"
+                       data-original-title="Like us on Facebook" rel="nofollow">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                </li>
+                <li class="nav-item" ng-if="false">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom"
+                       href="/" target="_blank"
+                       data-original-title="Follow us on Instagram" rel="nofollow">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="page-header header-filter clear-filter purple-filter" data-parallax="true"
+     style="background-image: url('static/images/ai-bigdata.jpg')">
+    <div class="container-fluid" style="z-index: 2;padding: 0 30px">
+        <div class="row">
+            <div class="col-md-12 justify-content-center align-items-center d-flex">
+                <div class="brand" style="color: white !important;">
+                    <h1 class="text-white">{{ 'Speech to text' | translate }}</h1>
+                    <h3 class="text-white">{{ 'Quickly and accurately convert Vietnamese voice and audio into text' | translate }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main main-raised">
+    <div class="section section-basic">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-nav-tabs" id="loading-div">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                    <button class="btn btn-primary mb-5"
+                                            ng-if="false"
+                                            ng-click="mic.click()"><i
+                                            class="material-icons">mic</i> {{ mic.textButton }}
+                                    </button>
+                                    <button class="btn btn-info mb-5" ng-disabled="record.buttons.start.disabled">
+                                        <input type="file" name="" class="inputFile-custom__file"
+                                               ng-if="!record.buttons.start.disabled"
+                                               id="stt-file" onchange="angular.element(this).scope().changeStt()">
+                                        <i class="material-icons">file_upload</i>
+                                        {{ 'Upload' | translate }}
+                                    </button>
+                                    <div class="row d-none">
+                                        <div class="col-md-12 align-content-center align-items-center text-center">
+                                            <button class="btn btn-primary btn-fab btn-round"
+                                                    title="Record"
+                                                    ng-click="record.start()"
+                                                    ng-disabled="record.buttons.start.disabled">
+                                                <i class="material-icons">mic</i>
+                                            </button>
+                                            <button class="btn btn-warning btn-fab btn-round"
+                                                    title="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            {{ record.buttons.pause.icon != 'play_arrow' ? 'Pause': 'Resume' }}"
+                                                    ng-click="record.pause()"
+                                                    ng-disabled="record.buttons.pause.disabled">
+                                                <i class="material-icons">{{ record.buttons.pause.icon }}</i>
+                                            </button>
+                                            <button class="btn btn-success btn-fab btn-round"
+                                                    title="Stop"
+                                                    ng-click="record.stop()" ng-disabled="record.buttons.stop.disabled">
+                                                <i class="material-icons">done</i>
+                                            </button>
+                                            <div class="status-record">
+                                                <span ng-if="record.buttons.start.disabled && record.buttons.pause.icon != 'play_arrow'">Recording</span>
+                                                <span ng-if="record.buttons.start.disabled && record.buttons.pause.icon == 'play_arrow'">Pause</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row d-none">
+                                        <div class="col-md-12" style="text-align: left">
+                                            <div class="title" style="text-align: center">
+                                                <h4>{{ 'language_2' | translate }}</h4>
+                                            </div>
+                                            <div class="form-check" style="margin-left: 20px">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios"
+                                                           id="exampleRadios1" value="en" ng-model="language">
+                                                    {{ 'en' | translate }}
+                                                    <span class="circle"><span class="check"></span></span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check" style="margin-left: 20px">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios"
+                                                           id="exampleRadios2" value="vi" checked=""
+                                                           ng-model="language">
+                                                    {{ 'vi' | translate }}
+                                                    <span class="circle"><span class="check"></span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div id="id-recording-audio">
+                                    </div>
+                                    <div class="recording-audio" ng-if="false">
+                                        <canvas id="canvas-wave"></canvas>
+                                    </div>
+                                    <div class="current-result"
+                                         style="font-size: 1.313rem;">
+                                        <div class="chat-body hide-scrollbar flex-1 h-100">
+                                            <div class="chat-legend" ng-if="!!currentResult">
+                                                <div class="agent">
+                                                    <a href="#" class="avatar avatar-responsive">
+                                                        <img class="avatar-img"
+                                                             ng-if="currentResult.agent_info.gender == 'MALE'"
+                                                             src="/static/assets/img/avatars/male-agent2.jpg"
+                                                             alt="">
+                                                        <img class="avatar-img"
+                                                             ng-if="currentResult.agent_info.gender != 'MALE'"
+                                                             src="/static/assets/img/avatars/female-agent2.png"
+                                                             alt="">
+                                                    </a>
+                                                    <div>{{ currentResult.agent_info.region | translate }}</div>
+                                                </div>
+                                                <div class="customer">
+                                                    <a href="#" class="avatar avatar-responsive">
+                                                        <img class="avatar-img"
+                                                             ng-if="currentResult.customer_info.gender == 'MALE'"
+                                                             src="/static/assets/img/avatars/male-customer.jpg"
+                                                             alt="">
+                                                        <img class="avatar-img"
+                                                             ng-if="currentResult.customer_info.gender != 'MALE'"
+                                                             src="/static/assets/img/avatars/female-customer.jpg"
+                                                             alt="">
+                                                    </a>
+                                                    <div>{{ currentResult.customer_info.region | translate }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="chat-body-inner" style="padding-bottom: 20px">
+                                                <div class="">
+                                                    <!-- Message -->
+                                                    <ng-container ng-repeat="item in currentResult.content">
+                                                        <div class="message" ng-if="item.channel == 'NHAN_VIEN'">
+                                                            <a href="#" class="avatar avatar-responsive">
+                                                                <img class="avatar-img"
+                                                                     ng-if="currentResult.agent_info.gender == 'MALE'"
+                                                                     src="/static/assets/img/avatars/male-agent2.jpg"
+                                                                     alt="">
+                                                                <img class="avatar-img"
+                                                                     ng-if="currentResult.agent_info.gender != 'MALE'"
+                                                                     src="/static/assets/img/avatars/female-agent2.png"
+                                                                     alt="">
+                                                            </a>
+                                                            <div class="message-inner">
+                                                                <div class="message-body">
+                                                                    <div class="message-content">
+                                                                        <div class="message-text">
+                                                                            <p>{{ item.text }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="message message-out"
+                                                             ng-if="item.channel == 'KHACH_HANG'">
+                                                            <a href="#" class="avatar avatar-responsive">
+                                                                <img class="avatar-img"
+                                                                     ng-if="currentResult.customer_info.gender == 'MALE'"
+                                                                     src="/static/assets/img/avatars/male-customer.jpg"
+                                                                     alt="">
+                                                                <img class="avatar-img"
+                                                                     ng-if="currentResult.customer_info.gender != 'MALE'"
+                                                                     src="/static/assets/img/avatars/female-customer.jpg"
+                                                                     alt="">
+                                                            </a>
+                                                            <div class="message-inner">
+                                                                <div class="message-body">
+                                                                    <div class="message-content">
+                                                                        <div class="message-text">
+                                                                            <p>{{ item.text }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">
+                <h2>{{ 'History' | translate }}</h2>
+            </div>
+            <table style="width: 100%" class="table table-bordered table-responsive">
+                <thead>
+                <tr class="text-nowrap">
+                    <th width="1%">{{ 'type' | translate }}</th>
+                    <th width="30px">{{ 'language_2' | translate }}</th>
+                    <th width="325px">{{ 'file' | translate }}</th>
+                    <th>{{ 'result' | translate }}</th>
+                    <th width="160px">{{ 'time' | translate }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="list_record.length == 0">
+                    <td colspan="4">{{ 'No data' | translate }}</td>
+                </tr>
+                <tr ng-repeat="item in list_record | reverse">
+                    <td>
+                                            <span class="badge badge-pill badge-warning"
+                                                  ng-if="item.type == 3">{{ 'Record' | translate }}</span>
+                        <span class="badge badge-pill badge-success"
+                              ng-if="item.type == 2">{{ 'Upload' | translate }}</span>
+                        <span class="badge badge-pill badge-primary"
+                              ng-if="item.type == 1">{{ 'Consecutive' | translate }}</span>
+                    </td>
+                    <td>{{ item.language | translate }}</td>
+                    <td>
+                        <div ng-bind-html="item.audio"></div>
+                    </td>
+                    <td>
+                        <div class="td-result">
+                            <div class="result-loading" ng-if="item.processing">
+                                <i class="material-icons">restart_alt</i>
+                            </div>
+                            <div ng-if="!item.processing" ng-click="show(item)">
+                                <div ng-if="!!item.result.content"><a
+                                        href="javascript:void(0)">{{ 'content_conversation' | translate }}</a></div>
+                                <div ng-if="!item.result.content">{{ item.result }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ item.time | date : 'dd/MM/yyyy hh:mm:ss'}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ 'content_conversation' | translate }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body" ng-if="!!modalData">
+                <div class="chat-body hide-scrollbar flex-1 h-100">
+                    <div class="chat-legend" ng-if="!!modalData">
+                        <div class="agent">
+                            <a href="#" class="avatar avatar-responsive">
+                                <img class="avatar-img"
+                                     ng-if="modalData.agent_info.gender == 'MALE'"
+                                     src="/static/assets/img/avatars/male-agent2.jpg"
+                                     alt="">
+                                <img class="avatar-img"
+                                     ng-if="modalData.agent_info.gender != 'MALE'"
+                                     src="/static/assets/img/avatars/female-agent2.png"
+                                     alt="">
+                            </a>
+                            <div>{{ modalData.agent_info.region | translate }}</div>
+                        </div>
+                        <div class="customer">
+                            <a href="#" class="avatar avatar-responsive">
+                                <img class="avatar-img"
+                                     ng-if="modalData.customer_info.gender == 'MALE'"
+                                     src="/static/assets/img/avatars/male-customer.jpg"
+                                     alt="">
+                                <img class="avatar-img"
+                                     ng-if="modalData.customer_info.gender != 'MALE'"
+                                     src="/static/assets/img/avatars/female-customer.jpg"
+                                     alt="">
+                            </a>
+                            <div>{{ modalData.customer_info.region | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="chat-body-inner" style="padding-bottom: 20px">
+                        <div class="">
+                            <!-- Message -->
+                            <ng-container ng-repeat="item in modalData.content">
+                                <div class="message" ng-if="item.channel == 'NHAN_VIEN'">
+                                    <a href="#" class="avatar avatar-responsive">
+                                        <img class="avatar-img"
+                                             ng-if="modalData.agent_info.gender == 'MALE'"
+                                             src="/static/assets/img/avatars/male-agent2.jpg"
+                                             alt="">
+                                        <img class="avatar-img"
+                                             ng-if="modalData.agent_info.gender != 'MALE'"
+                                             src="/static/assets/img/avatars/female-agent2.png"
+                                             alt="">
+                                    </a>
+                                    <div class="message-inner">
+                                        <div class="message-body">
+                                            <div class="message-content">
+                                                <div class="message-text">
+                                                    <p>{{ item.text }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="message message-out"
+                                     ng-if="item.channel == 'KHACH_HANG'">
+                                    <a href="#" class="avatar avatar-responsive">
+                                        <img class="avatar-img"
+                                             ng-if="modalData.customer_info.gender == 'MALE'"
+                                             src="/static/assets/img/avatars/male-customer.jpg"
+                                             alt="">
+                                        <img class="avatar-img"
+                                             ng-if="modalData.customer_info.gender != 'MALE'"
+                                             src="/static/assets/img/avatars/female-customer.jpg"
+                                             alt="">
+                                    </a>
+                                    <div class="message-inner">
+                                        <div class="message-body">
+                                            <div class="message-content">
+                                                <div class="message-text">
+                                                    <p>{{ item.text }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-link"
+                        data-dismiss="modal">{{ 'modal_close' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" data-background-color="black">
+    <div class="container">
+        <nav class="float-left">
+            <ul>
+                <li>
+                    <a href="/">
+                        About Us
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright float-right">
+            &copy;
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
+            , made with <i class="material-icons">favorite</i> by
+            <a href="/" target="_blank">Mobifone NLP</a> for the better.
+        </div>
+    </div>
+</footer>
+<!--   Core JS Files   -->
+<script src="static/theme/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="static/theme/js/core/popper.min.js" type="text/javascript"></script>
+<script src="static/theme/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+<script src="static/theme/js/plugins/moment.min.js"></script>
+<!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+<script src="static/theme/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="static/theme/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!--  Google Maps Plugin    -->
+<!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+<script src="static/theme/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+<script src="static/js/recorder.js" type="text/javascript"></script>
+<script src="static/js/angular.js" type="text/javascript"></script>
+<script>
+    angular.lowercase = text => text.toLowerCase();
+</script>
+<script src="static/js/angular-translate.js" type="text/javascript"></script>
+<script src="static/js/angular-sanitize.js" type="text/javascript"></script>
+<script src="static/js/md5.js" type="text/javascript"></script>
+<script src="static/js/recorder.js" type="text/javascript"></script>
+<script src="static/js/jquery-loading/jquery.loading.min.js" type="text/javascript"></script>
+<script src="static/js/siriwave.js" type="text/javascript"></script>
+<script src="static/js/demo_stt_conversation.js" type="text/javascript"></script>
+</body>
+
+</html>
